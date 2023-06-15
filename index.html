@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home work №2</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+    <h2>Задача 3.</h2>
+    <div id="box"></div>
+
+    <h2>Задача 2.</h2>
+    <script>
+        // Задача 1.
+        var arrStr = ['Ехал Грека', 'через реку,', 'видит Грека в реке рак,', 'сунул Грека руку в реку,', 'рак за руку Греку цап.'];
+		alert(`Задача 1.\n\nИсходный массив:\n${arrStr}\n\nРезультат будет выведен в консоль.`);
+
+        // Первый спсоб
+		/* var maxSize = arrStr[0].length;
+		var key;
+		for (var i = 1; i < arrStr.length; i++){
+		    if (maxSize < arrStr[i].length){
+		        maxSize = arrStr[i].length
+		        key = i;
+		    }            
+		}
+		var newStrArr = new Array(arrStr[key].length);
+		for (var i in arrStr[key])
+		    newStrArr[i] = (arrStr[key][i]);
+		console.log(newStrArr)*/
+		
+        //Второй способ
+		var longestStr = arrStr.reduce((a, b) => { return a.length > b.length ? a : b;});
+		var newStrArr = new Array(longestStr.length);
+		for (var i in longestStr)
+		    newStrArr[i] = longestStr[i];
+		console.log(newStrArr);
+//=======================================================================================
+        
+        //Задача 2.
+        marker(prompt('Задача 2.\n\nВведите текст:'), prompt('Задача 2.\n\nВведите цвет:'), prompt('Задача 2.\n\nВведите размер:'));
+
+        function marker(text, color, fontSize){
+            document.write(`<p style="color: ${color}; font-size: ${fontSize}px; font-family: 'Comic Sans MS';">${text}</p>`);
+        };
+//=======================================================================================      
+
+        //Задача 3.
+        alert('Задача 3.\nПосле нажатия \"ok\" на странице появятся картинки.')
+        function placeImages(images) {
+            var imagesHTML = '';
+            for (var i in images) {
+                imagesHTML += `<img src="${images[i]}" alt="Мемы">`;
+            }
+            box.innerHTML = imagesHTML;
+        }
+
+        var images = [
+            "https://img2.reactor.cc/pics/post/full/theycantalk-Комиксы-6343673.jpeg", 
+            "https://i2.wp.com/img.gazeta.ru/files3/828/11492828/upload-31-pic4_zoom-1500x1500-89507.jpg", 
+            "https://kartinkof.club/uploads/posts/2022-03/1648238149_28-kartinkof-club-p-plachushchii-chelovek-mem-31.jpg"];
+        placeImages(images);
+
+    </script>
+</body>
+</html>
